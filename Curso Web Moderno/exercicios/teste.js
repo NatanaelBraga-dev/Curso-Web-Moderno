@@ -17,4 +17,3 @@ console.log(Math.max.apply(null,lista));
 console.log(Math.min.apply(null,lista));
 
 //math.max.apply(null, meu array) "serve para pegar o maior valor de um array"
-//apenas um teste para o github
