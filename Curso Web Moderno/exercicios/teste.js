@@ -40,9 +40,12 @@ let numero = 4
 
 let antecessor = numero - 1
 let valor = numero * antecessor
-while(valor != 0){
+while(antecessor != 0){
     console.log(`valor de entrada: ${antecessor}`);
-    valor = valor * antecessor 
-    console.log(valor);
     antecessor--
+    if(antecessor != 0){
+        valor = valor * antecessor 
+        console.log(valor);
+    }
+    console.log(valor)    
 }
