@@ -16,7 +16,7 @@ words.forEach(function(nome,indice){
 
 letrasIniciais.forEach(function(letra, indice){
     let palavrasDaRespectivaLetra = []
-    let somenteEssaLetra = words.filter(function(nomes, indices){            
+    words.filter(function(nomes, indices){            
             if (nomes[0] === letra){
                 palavrasDaRespectivaLetra.push(nomes)
             }
