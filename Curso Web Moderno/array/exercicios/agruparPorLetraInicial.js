@@ -14,9 +14,9 @@ words.forEach(function(nome,indice){
     }
 })
 
-letrasIniciais.forEach(function(letra, indice){
+letrasIniciais.forEach(function(letra){
     let palavrasDaRespectivaLetra = []
-    words.filter(function(nomes, indices){            
+    words.filter(function(nomes, ){            
             if (nomes[0] === letra){
                 palavrasDaRespectivaLetra.push(nomes)
             }
