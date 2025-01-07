@@ -1,6 +1,6 @@
 // console.log(global);
 
-globalThis.minhaApp = {
+global.minhaApp = {
     saudacao () {
         return 'estou em todos os lugares'
     },
