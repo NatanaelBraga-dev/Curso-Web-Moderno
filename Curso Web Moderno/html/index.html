@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios HTML</title>
+</head>
+<body>
+    <h1>
+        Exercicios HTML
+    </h1>
+    <nav>
+        <a href wm-nav="exercicios/teste.html">00 - teste</a>
+    </nav>
+    <section id="conteudo">
+
+    </section>
+    <footer>
+        <br>
+        Curso de Web Moderno
+    </footer>
+    <script>
+        document.querySelectorAll('[wm-nav]').forEach(link => {
+            const conteudo = document.getElementById("conteudo")
+
+            link.onclick = function(e){
+                e.preventDefault() //impede que a ação padrão ocorra que seria o redirecionamento de página 
+                fetch(link.getAttribute('wm-nav')) //faz uma requisição ajax no link referenciado que no caso é o que está na tag <a> acima
+                    .then(resp => resp.text()) //pega o conteudo textual da página acessada
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script>
+</body>
+</html>
