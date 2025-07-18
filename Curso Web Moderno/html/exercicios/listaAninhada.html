@@ -1,0 +1,61 @@
+<h1>Projeto</h1>
+<ul class="tree">
+    <li>
+        Backend
+        <li>
+            app
+            <ul>
+                <li>Produto.js</li>
+                <li>usuario.js</li>
+                <li>venda.js</li>
+            </ul>
+        </li>
+        <li>
+            config
+            <ul>
+                <li>banco.js</li>
+                <li>rotas.js</li>
+                <li>servidor.js</li>
+            </ul>
+        </li>
+    </li>
+    <li>
+        frontend
+        <ul>
+            <li>
+                public
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+
+<script>
+    console.log("Arvore...")
+
+  // Seleciona todos os <li>
+  document.querySelectorAll('li').forEach(li => {
+    // Verifica se esse <li> tem uma <ul> abaixo dele
+    const ulFilha = li.querySelector('ul');
+    if (ulFilha) {
+      // Esconde a sublista inicialmente
+      ulFilha.style.display = 'none';
+
+      // Adiciona comportamento de clique
+      li.addEventListener('click', function(e) {
+        e.stopPropagation(); // Evita que clique no filho afete pai
+        if (ulFilha.style.display === 'none') {
+          ulFilha.style.display = 'block';
+        } else {
+          ulFilha.style.display = 'none';
+        }
+      });
+    }
+  });
+</script>

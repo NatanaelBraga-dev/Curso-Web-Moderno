@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicios HTML</title>
@@ -18,23 +19,46 @@
         <a href wm-nav="exercicios/teste.html">00 - teste</a>
         <a href wm-nav="exercicios/texto1.html">01 - Texto 1</a>
         <a href wm-nav="exercicios/texto3.html">02 - Texto 2</a>
-        <a href wm-nav="exercicios/listas.html">03 - Texto 3</a>
+        <a href wm-nav="exercicios/listas.html">Listas</a>
+        <a href wm-nav="exercicios/listaAninhada.html">Lista Aninhada</a>
     </nav>
     <section id="conteudo"></section>
     <footer>
         Curso de Web Moderno
     </footer>
     <script>
-        document.querySelectorAll('[wm-nav]').forEach(link => {
-            const conteudo = document.getElementById("conteudo")
+    document.querySelectorAll('[wm-nav]').forEach(link => {
+    const conteudo = document.getElementById("conteudo");
 
-            link.onclick = function(e){
-                e.preventDefault() //impede que a ação padrão ocorra que seria o redirecionamento de página 
-                fetch(link.getAttribute('wm-nav')) //faz uma requisição ajax no link referenciado que no caso é o que está na tag <a> acima
-                    .then(resp => resp.text()) //pega o conteudo textual da página acessada
-                    .then(html => conteudo.innerHTML = html)
+    link.onclick = function(e) {
+      e.preventDefault();
+
+      const url = link.getAttribute('wm-nav');
+
+      fetch(url)
+        .then(resp => resp.text())
+        .then(html => {
+          conteudo.innerHTML = html;
+
+          // Executa os scripts que vieram no conteúdo carregado
+          const scripts = conteudo.querySelectorAll('script');
+          scripts.forEach(oldScript => {
+            const newScript = document.createElement('script');
+
+            if (oldScript.src) {
+              // Verifica se o script externo já foi carregado
+              if (!document.querySelector(`script[src="${oldScript.src}"]`)) {
+                newScript.src = oldScript.src;
+                document.head.appendChild(newScript);
+              }
+            } else {
+              newScript.textContent = oldScript.textContent;
+              document.body.appendChild(newScript);
             }
-        })
-    </script>
+          });
+        });
+    }
+  });
+</script>
 </body>
 </html>
