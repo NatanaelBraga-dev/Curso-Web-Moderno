@@ -82,7 +82,7 @@
 
     function slider(){
         const elementos = document.querySelectorAll('[wm-slider] > p')
-        const slides = Array.from(elementos)
+        const slides = Array.from(elementos) //transforma uma node list em um array de fato
         exibirSlider(slides,slides[0])
     }
 
